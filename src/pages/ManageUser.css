@@ -1,0 +1,17 @@
+.header{
+   display: flex; 
+   justify-content: space-between;
+}
+.create-btn{
+    margin: 10px;
+    border: none;
+    height: 30px;
+    weight:65px;
+    border-radius: 3px;
+    background-color: rgb(139, 49, 230);
+}
+.create-btn:hover{
+    
+    background-color: rgb(102, 20, 185);
+    /* text-decoration-color: rgb(255, 255, 255); */
+}

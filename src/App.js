@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import ManageUser from './pages/ManageUser'
+import { createBrowserHistory } from 'history';
+import { Switch, Router, Route } from 'react-router';
+// import EditUser from './pages/EditUser';
 
-function App() {
+export const history = createBrowserHistory();
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+    <Router history={history}>
+      <Switch>
+        <Route path={'/Home/:page'} exact component={ManageUser} />
+      </Switch>
+    </Router>
+  )
+};
