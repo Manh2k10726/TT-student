@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetListUserAction } from '../Redux/Action/ManageUserAction';
 import './ManageUser.css'
 import { history } from '../App';
-import {ModalCreate} from './ModalCreate'
+import ModalCreate from './ModalCreate'
 
 export default function ManageUser(props) {
     let pages  = props.match.params;
@@ -78,8 +78,12 @@ export default function ManageUser(props) {
                 Tạo mới
             </button>
             </div>
-            <Modal title="Thêm Mới Người Dùng" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                
+            <Modal title="Thêm Mới Người Dùng" open={isModalOpen} footer={null} >
+                <ModalCreate
+                    setIsModalOpen={setIsModalOpen}
+                    onCancel={handleCancel}
+                    onOk={handleOk}
+                />
             </Modal>
             <div className='my-8'>
                 <Table

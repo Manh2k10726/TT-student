@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.23.6",
     "axios": "^1.2.1",
+    "bootstrap": "^4.6.2",
     "formik": "^2.2.9",
     "history": "^4.10.0",
     "moment": "^2.29.4",

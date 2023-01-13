@@ -1,6 +1,7 @@
 
 const initialState = {
     lstUser: [],
+    lstUserById: [],
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -11,6 +12,12 @@ export const ManageUserReducer = (state = initialState, action) => {
             state.lstUser = action.dataUser
             return { ...state }
         }
+
+        case "GET_USER_ID": {
+            state.lstUserById = action.dataUserById
+            return { ...state }
+        }
+
         default:
             return state
     }
