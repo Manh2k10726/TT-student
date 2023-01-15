@@ -1,6 +1,7 @@
 
 import { manageUserService } from './../../services/manageUserService';
 import { message } from 'antd';
+import { history } from '../../App';
 
 
 export const GetListUserAction = (page) => {
@@ -43,6 +44,7 @@ export const GetUserByIdAction = (id) => {
     return async dispatch => {
         try {
             const result = await manageUserService.getDetail(id);
+            console.log('check user by id :' ,result)
             if (result.status === 200) {
                 dispatch({
                     type: 'GET_USER_ID',
@@ -55,6 +57,46 @@ export const GetUserByIdAction = (id) => {
             }
         } catch (error) {
             console.log('error', error.response?.data)
+        }
+    }
+}
+
+export const UpdateUserAction = (id,dataUser) => {
+    return async dispatch => {
+        try {
+            const result = await manageUserService.updateUser(id,dataUser);
+            console.log("check update:",result)
+            if (result.status === 200) {
+               await message.message("Cập nhập thành công !!!")
+                history.push(`/Home/1`)
+            }
+            else {
+                message.error("Cập nhập thất bại !!!")
+            }
+        } catch (error) {
+            message.error("Cập nhập thất bại !!")
+            console.log('error', error.response?.data)
+        }
+    }
+}
+
+export const DeleteUserAction = (id) => {
+    return async dispatch => {
+        try {
+            const result = await manageUserService.delUser(id);
+            if (result.status === 200) {
+                message.success('Xóa thành công !!!')
+                history.push(`/Home/1`)
+                dispatch(GetListUserAction())
+            }
+            else {
+                message.warning('Xóa thất bại !!!')
+            }
+
+        } catch (error) {
+            message.warning('Xóa thất bại !!!')
+            console.log('error', error.response?.data)
+
         }
     }
 }

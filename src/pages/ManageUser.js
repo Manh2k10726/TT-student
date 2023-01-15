@@ -5,6 +5,7 @@ import { GetListUserAction } from '../Redux/Action/ManageUserAction';
 import './ManageUser.css'
 import { history } from '../App';
 import ModalCreate from './ModalCreate'
+import { AiTwotoneEdit } from 'react-icons/ai';
 
 export default function ManageUser(props) {
     let pages  = props.match.params;
@@ -17,8 +18,6 @@ export default function ManageUser(props) {
 
     const dispatch = useDispatch();
 
-    // const {listUser} = useSelector(state=>state.ManageUserReducer)
-    // console.log('check lstUser:',lstUser)
     const {lstUser} = useSelector(state=>state.ManageUserReducer)
     console.log('lstUser:',lstUser)
 
@@ -53,6 +52,20 @@ export default function ManageUser(props) {
         {
             title: 'Địa chỉ',
             dataIndex: 'address',
+        },
+        {
+            title: '',
+            dataIndex: 'id',
+            key: 'id',
+            render: (text, item) => {
+                return <div className='flex'>
+                    <button className='btn btn-light edit-btn' title='Sửa' onClick={() => {
+                        history.push(`/User/${item.id}`)
+                    }}>
+                        <AiTwotoneEdit style={{ fontSize: 20 }}></AiTwotoneEdit>
+                    </button>
+                </div>
+            },
         },
         
     ];

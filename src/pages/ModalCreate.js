@@ -1,7 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { Table, Modal } from 'antd';
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { history } from '../App';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { AddUserAction } from '../Redux/Action/ManageUserAction';
@@ -22,16 +20,10 @@ export default function ModalCreate(props) {
         },
         validationSchema : Yup.object({
             username: Yup.string()
-              .max(5,'Your name must be at least 5 characters !')
-              .matches(25,'Your name must be under 25 characters !')
               .required('You must fill in this section !!!'),
             firstname: Yup.string()
-              .max(5,'Your firstname must be at least 5 characters !')
-              .matches(25,'Your firstname must be under 25 characters !')
               .required('You must fill in this section !!!'),
             lastname: Yup.string()
-              .max(5,'Your lastname must be at least 5 characters !')
-              .matches(25,'Your lastname must be under 25 characters !')
               .required('You must fill in this section !!!'),
             email: Yup.string()
               .email('Invalid Email')
@@ -67,10 +59,7 @@ export default function ModalCreate(props) {
         formik.setFieldValue('gender', e.target.value);
         setValue(e.target.value);
     };
-    // const {listUser} = useSelector(state=>state.ModalCreateReducer)
-    // console.log('check lstUser:',lstUser)
-    useEffect(() => {
-    }, [])
+    
 
     return (
         <form onSubmit={formik.handleSubmit}>
@@ -175,7 +164,7 @@ export default function ModalCreate(props) {
             </div>
             <div >
                 <button type='button' onClick={props.onCancel} className='btn btn-secondary' >Đóng</button>
-                <button className='btn btn-primary' onClick={props.onOk} type="submit">Lưu người dùng</button>
+                <button className='btn btn-primary' onClick={props.onOk} type="submit">Tạo</button>
             </div>
      </form>
     )
