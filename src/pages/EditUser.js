@@ -12,12 +12,12 @@ import {ManageUserReducer} from '../Redux/configStore'
 export default function EditUser(props) {
     const dispatch = useDispatch();
     let {id}  = props.match.params;
-    console.log('check page:',id)
+    // console.log('check page:',id)
     useEffect(() => {
         dispatch(GetUserByIdAction(id))
     }, [])
     const {lstUserById} = useSelector(state=>state.ManageUserReducer)
-    console.log('lstUserById :',lstUserById)
+    // console.log('lstUserById :',lstUserById)
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -73,6 +73,11 @@ export default function EditUser(props) {
         formik.setFieldValue('gender', e.target.value);
         setValue(e.target.value);
     };
+
+    const cancel = (e) => {
+        console.log(e);
+    };
+
     return (
         <div className='edit col-md-4'>
             
@@ -180,17 +185,20 @@ export default function EditUser(props) {
                     </div>
                 </div>
                 <div >
-                    <button type='button' onClick={props.onCancel} className='btn btn-secondary' >Đóng</button>
+                    <button type='button'  
+                        onClick={() => {
+                        history.replace(`/Home/1`)}} 
+                        className='btn btn-secondary' >Đóng</button>
                     <Popconfirm
                         title="Bạn có chắc muốn xóa không?"
-                        // onConfirm={() => { dispatch(DeleteStudentAction(id)) }}
-                        // onCancel={cancel}
+                        onConfirm={() => { dispatch(DeleteUserAction(id)) }}
+                        onCancel={cancel}
                         okText="Yes"
                         cancelText="No">
-                        <button className='btn btn-danger' onClick={props.onOk} >Xóa</button>
+                        <button className='btn btn-danger'  >Xóa</button>
                     </Popconfirm>
                    
-                    <button className='btn btn-primary' onClick={props.onOk} type="submit">Cập nhật</button>
+                    <button className='btn btn-primary' type="submit">Cập nhật</button>
                 </div>
             </form>
         </div>

@@ -56,7 +56,7 @@ export const GetUserByIdAction = (id) => {
                 message.error("Không lấy được sinh viên!")
             }
         } catch (error) {
-            console.log('error', error.response?.data)
+            // console.log('error', error.response?.data)
         }
     }
 }
@@ -65,15 +65,18 @@ export const UpdateUserAction = (id,dataUser) => {
     return async dispatch => {
         try {
             const result = await manageUserService.updateUser(id,dataUser);
-            console.log("check update:",result)
+            // console.log("check update:",result)
             if (result.status === 200) {
-               await message.message("Cập nhập thành công !!!")
+                await message.success("Cập nhập thành công !!!")
                 history.push(`/Home/1`)
+            // console.log('ok');
             }
             else {
                 message.error("Cập nhập thất bại !!!")
             }
         } catch (error) {
+            // console.log('ok');
+
             message.error("Cập nhập thất bại !!")
             console.log('error', error.response?.data)
         }
@@ -96,6 +99,7 @@ export const DeleteUserAction = (id) => {
         } catch (error) {
             message.warning('Xóa thất bại !!!')
             console.log('error', error.response?.data)
+            // console.log('ok')
 
         }
     }
