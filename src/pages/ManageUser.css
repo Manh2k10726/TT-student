@@ -11,7 +11,9 @@
     background-color: rgb(139, 49, 230);
 }
 .create-btn:hover{
-    
     background-color: rgb(102, 20, 185);
-    /* text-decoration-color: rgb(255, 255, 255); */
+    color: rgb(234, 147, 26);
+}
+.edit-btn:hover{
+    color: rgb(234, 147, 26) !important;
 }

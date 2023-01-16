@@ -29,10 +29,10 @@ export const AddUserAction = (dataUser) => {
         try {
             const result = await manageUserService.addUser(dataUser);
             if (result.status === 200) {
-                message.message("Thêm mới thành công")
+                message.message("Thêm mới thành công !!!")
             }
             else {
-                message.error("Thêm mới thất bại!")
+                message.error("Thêm mới thất bại !!!")
             }
         } catch (error) {
             console.log('error', error.response?.data)
@@ -56,7 +56,7 @@ export const GetUserByIdAction = (id) => {
                 message.error("Không lấy được sinh viên!")
             }
         } catch (error) {
-            // console.log('error', error.response?.data)
+            console.log('error', error.response?.data)
         }
     }
 }
@@ -65,7 +65,6 @@ export const UpdateUserAction = (id,dataUser) => {
     return async dispatch => {
         try {
             const result = await manageUserService.updateUser(id,dataUser);
-            // console.log("check update:",result)
             if (result.status === 200) {
                 await message.success("Cập nhập thành công !!!")
                 history.push(`/Home/1`)
@@ -99,8 +98,6 @@ export const DeleteUserAction = (id) => {
         } catch (error) {
             message.warning('Xóa thất bại !!!')
             console.log('error', error.response?.data)
-            // console.log('ok')
-
         }
     }
 }

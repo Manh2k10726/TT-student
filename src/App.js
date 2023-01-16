@@ -11,6 +11,8 @@ export default function App() {
       <Switch>
         <Route path={'/Home/:page'} exact component={ManageUser} />
         <Route path={'/User/:id'} exact component={EditUser} />
+
+        <Route path={'/'} exact Component={ManageUser} />
       </Switch>
     </Router>
   )

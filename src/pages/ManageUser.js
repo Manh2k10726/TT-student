@@ -9,8 +9,6 @@ import { AiTwotoneEdit } from 'react-icons/ai';
 
 export default function ManageUser(props) {
     let pages  = props.match.params;
-    console.log('check page:',pages)
-
     const [pageId, setPageId] = useState();
     useEffect(() => {
         setPageId(pages)
@@ -19,7 +17,7 @@ export default function ManageUser(props) {
     const dispatch = useDispatch();
 
     const {lstUser} = useSelector(state=>state.ManageUserReducer)
-    console.log('lstUser:',lstUser)
+    console.log('lstUser:',lstUser.total_count)
 
     useEffect(() => {
         dispatch(GetListUserAction(pages.page - 1))
@@ -105,6 +103,7 @@ export default function ManageUser(props) {
                     key=''
                     pagination={{
                         defaultCurrent: pageId,
+                        defaultPageSize:4,
                         total: `${lstUser.total_count}`,
                         onChange: (page, pageSize) => {
                             dispatch(GetListUserAction(page - 1))
